@@ -7,6 +7,7 @@ import App from './components/App';
 import Search from './components/Search';
 import Project from './components/Project';
 import * as serviceWorker from './serviceWorker';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 const routes = (
     <Router history={browserHistory}>
