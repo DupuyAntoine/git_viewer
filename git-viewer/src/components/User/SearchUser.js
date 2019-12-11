@@ -8,22 +8,22 @@ we will use react-router's history.push function to push a new URL to the histor
 This will have as an effect to navigate to a new URL, which will display the User component
 Why are we doing this instead of using a <Link>? The answer is straightforward, but make sure you understand!!!
 */
-class Search extends React.Component {
+class SearchUser extends React.Component {
     constructor(props) {
         super(props);
         this._handleSubmit = this._handleSubmit.bind(this);
     }
     _handleSubmit(e) {
         e.preventDefault();
-        history.push(`/users/${this.refs.projectInput.value}`)
+        history.push(`/users/${this.refs.userInput.value}`)
     }
 
     render() {
         return (
             <div>
-                <h2>Enter a GitHub project</h2>
+                <h2>Enter a GitHub username</h2>
                 <form onSubmit={this._handleSubmit}>
-                    <input ref="projectInput" type="text" />
+                    <input ref="userInput" type="text" />
                     <button>Search</button>
                 </form>
             </div>
@@ -31,4 +31,4 @@ class Search extends React.Component {
     }
 };
 
-export default Search;
+export default SearchUser;
