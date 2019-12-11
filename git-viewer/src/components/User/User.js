@@ -29,7 +29,6 @@ class User extends React.Component {
                 });
             }
         );
-        console.log(this.state)
     }
 
     /*
