@@ -4,15 +4,16 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import './index.css';
 import App from './components/App';
-import Search from './components/Search';
-import Project from './components/Project';
+import SearchUser from './components/User/SearchUser';
+import User from './components/User/User';
 import * as serviceWorker from './serviceWorker';
 
 const routes = (
     <Router history={browserHistory}>
         <Route path="/" component={App}>
-            <IndexRoute component={Search}/>
-            <Route path="users/:username" component={Project}/>
+            <IndexRoute component={SearchUser}/>
+            <Route path="users/:username" component={User}/>
+
         </Route>
     </Router>
 )
