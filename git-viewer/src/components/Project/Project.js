@@ -38,9 +38,9 @@ class User extends React.Component {
         return (
             <li key={commit.url}>
                 <ul>
-                <Link to={commit.url}>
-                    <p>lien {commit.commit.url}</p>
-                </Link>
+                <a href={commit.html_url}>
+                    Link to commit url
+                </a>
                 <p>Autheur : {commit.commit.author.name}</p>
                 <p>Date : {commit.commit.author.date}</p>
                 <p>Commiteur : {commit.commit.committer.name}</p>
