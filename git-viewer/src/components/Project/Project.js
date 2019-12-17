@@ -39,7 +39,6 @@ class Project extends React.Component {
                     Link to commit url
                 </a>
                 <p>Autheur : {commit.commit.author.name}</p>
-                <p>Date : {commit.commit.author.date}</p>
                 <p>Commiteur : {commit.commit.committer.name}</p>
                 <p>Date : {commit.commit.committer.date}</p>
                 <p>Message : {commit.commit.message}</p>
