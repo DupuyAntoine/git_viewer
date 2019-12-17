@@ -14,6 +14,7 @@ import SearchProject from './components/Project/SearchProject'
 import Project from './components/Project/Project'
 
 import * as serviceWorker from './serviceWorker';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 const routes = (
     <Router history={browserHistory}>
