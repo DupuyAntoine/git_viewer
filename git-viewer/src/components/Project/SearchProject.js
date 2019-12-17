@@ -1,6 +1,5 @@
 import React from 'react';
 import { browserHistory as history } from 'react-router';
-// import '../styles/Render.css'
 import styles from '../../styles/Render.css'
 
 /*
