@@ -27,7 +27,42 @@ class Project extends React.Component {
             }
         );
     }
-
+    /**For gitlab */
+    /*
+    componentDidMount(){
+        fetch(https://gitlab.com/api/v4/projects?search=${this.props.params.repo})
+        .then(response => response.json())
+        .then(
+            repo => {
+                this.setState({
+                    repo : repo
+                })
+                console.log(this.state.repo[0].id)
+            }
+        )
+    }
+    componentDidUpdate(){
+        if(this.state.repo !== null && this.state.idbefore !== this.state.repo[0].id){
+            fetch(https://gitlab.com/api/v4/projects/${this.state.repo[0].id}/repository/commits)
+            .then(response => response.json())
+            .then(
+                commits => {
+                    this.setState({
+                        commits : commits
+                    })
+                    console.log(commits.id)
+                }
+            )
+            .then(
+                this.setState({
+                    idbefore : this.state.repo[0].id
+                })
+            )
+        }else{
+            console.log("nop")
+        }
+    }
+    */
     /*
     This method is used as a mapping function. Eventually this could be factored out to its own component.
     */
@@ -45,6 +80,18 @@ class Project extends React.Component {
                 </ul>
             </div>
         );
+        /** For gitlab */
+        /*
+        <div key={commit.id} className="commit" id={commit.id} >
+            <ul>
+            <p>Autheur : {commit.author_name}</p>
+            <p>Date : {commit.authored_date}</p>
+            <p>Commiteur : {commit.committer_name}</p>
+            <p>Date : {commit.committed_date}</p>
+            <p>Message : {commit.message}</p>
+            </ul>
+        </div>
+        */
     }
 
     render() {
@@ -67,7 +114,7 @@ class Project extends React.Component {
         } else {
             return(
             <div>
-                <p>There is no commits from the {this.props.params.user}/{this.props.params.repo} or the repository does not exist.</p>
+                <p>There is no commits from the {this.props.params.user}/{this.props.params.repo}, the repository does not exist or is not public.</p>
             </div>)
         }
     }
