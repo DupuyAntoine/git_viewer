@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import 'bootstrap/dist/css/bootstrap.css';
 
 /*
 This is the layout component. It's displayed by the top-level Route

@@ -1,4 +1,6 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import styles from '../../styles/Render.css'
 
 class Project extends React.Component {
     constructor() {
