@@ -15,17 +15,33 @@ class Project extends React.Component {
         When `render` gets called again, `this.state.user` exists and we get the user info display instead of "LOADING..."
     */
     componentDidMount() {
-        fetch(`https://api.github.com/repos/${this.props.params.user}/${this.props.params.repo}/commits`)
-        .then(response => response.json())
-        .then(
-            commits => {
-                // How can we use `this` inside a callback without binding it??
-                // Make sure you understand this fundamental difference with arrow functions!!!
-                this.setState({
-                    commits: commits
-                });
-            }
-        );
+        if(this.props.params.git.toLowerCase() == "github.com"){
+            fetch(`https://api.github.com/repos/${this.props.params.user}/${this.props.params.repo}/commits`)
+            .then(response => response.json())
+            .then(
+                commits => {
+                    // How can we use `this` inside a callback without binding it??
+                    // Make sure you understand this fundamental difference with arrow functions!!!
+                    this.setState({
+                        commits: commits,
+                        repo : null
+                    });
+                }
+            );
+        }else {
+            fetch(`https://gitlab.com/api/v4/projects?search=${this.props.params.repo}`)
+            .then(response => response.json())
+            .then(
+                repo => {
+                    this.setState({
+                        repo : repo,
+                        gitlab : "ok"
+                    })
+                    console.log(this.state.repo[0].id)
+                }
+            )
+        }
+        
     }
     /**For gitlab */
     /*
@@ -40,10 +56,10 @@ class Project extends React.Component {
                 console.log(this.state.repo[0].id)
             }
         )
-    }
+    }*/
     componentDidUpdate(){
-        if(`this.state.repo !== null && this.state.idbefore !== this.state.repo[0].id`){
-            fetch(https://gitlab.com/api/v4/projects/${this.state.repo[0].id}/repository/commits)
+        if(this.state.repo !== null && this.state.idbefore !== this.state.repo[0].id && this.state.gitlab == "ok"){
+            fetch(`https://gitlab.com/api/v4/projects/${this.state.repo[0].id}/repository/commits`)
             .then(response => response.json())
             .then(
                 commits => {
@@ -62,12 +78,25 @@ class Project extends React.Component {
             console.log("nop")
         }
     }
-    */
+    
     /*
     This method is used as a mapping function. Eventually this could be factored out to its own component.
     */
     renderCommit(commit) {
-        return (
+        if(this.state.gitlab == "ok"){
+            return (
+                <div key={commit.id} className="commit" id={commit.id} >
+                    <ul>
+                    <p>Autheur : {commit.author_name}</p>
+                    <p>Date : {commit.authored_date}</p>
+                    <p>Commiteur : {commit.committer_name}</p>
+                    <p>Date : {commit.committed_date}</p>
+                    <p>Message : {commit.message}</p>
+                    </ul>
+                </div>
+            );
+        }else {
+            return (
             <div key={commit.url} className="commit" id={commit.url} >
                 <ul>
                 <a href={commit.html_url}>
@@ -79,19 +108,8 @@ class Project extends React.Component {
                 <p>Message : {commit.commit.message}</p>
                 </ul>
             </div>
-        );
-        /** For gitlab */
-        /*
-        <div key={commit.id} className="commit" id={commit.id} >
-            <ul>
-            <p>Autheur : {commit.author_name}</p>
-            <p>Date : {commit.authored_date}</p>
-            <p>Commiteur : {commit.committer_name}</p>
-            <p>Date : {commit.committed_date}</p>
-            <p>Message : {commit.message}</p>
-            </ul>
-        </div>
-        */
+            );
+        }
     }
 
     render() {

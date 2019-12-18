@@ -21,7 +21,7 @@ class SearchProject extends React.Component {
         return (
             <div className="card mb-3">
                 <div className="renderPrincipal">
-                    <h2>Enter a GitHub project</h2>
+                    <h2>Enter a GitHub/Gitlab project like this gitversion.com/user/repo</h2>
                     <form onSubmit={this._handleSubmit}>
                         <input ref="projectInput" type="text" />
                         <button>Search</button>
