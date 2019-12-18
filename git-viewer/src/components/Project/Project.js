@@ -15,6 +15,7 @@ class Project extends React.Component {
         When `render` gets called again, `this.state.user` exists and we get the user info display instead of "LOADING..."
     */
     componentDidMount() {
+        if(toLowerCase(this.props.params.git) == "github")
         fetch(`https://api.github.com/repos/${this.props.params.user}/${this.props.params.repo}/commits`)
         .then(response => response.json())
         .then(
@@ -30,7 +31,7 @@ class Project extends React.Component {
     /**For gitlab */
     /*
     componentDidMount(){
-        fetch(https://gitlab.com/api/v4/projects?search=${this.props.params.repo})
+        fetch(`https://gitlab.com/api/v4/projects?search=${this.props.params.repo}`)
         .then(response => response.json())
         .then(
             repo => {
@@ -42,7 +43,7 @@ class Project extends React.Component {
         )
     }
     componentDidUpdate(){
-        if(this.state.repo !== null && this.state.idbefore !== this.state.repo[0].id){
+        if(`this.state.repo !== null && this.state.idbefore !== this.state.repo[0].id`){
             fetch(https://gitlab.com/api/v4/projects/${this.state.repo[0].id}/repository/commits)
             .then(response => response.json())
             .then(
