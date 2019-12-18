@@ -15,7 +15,7 @@ class Project extends React.Component {
         When `render` gets called again, `this.state.user` exists and we get the user info display instead of "LOADING..."
     */
     componentDidMount() {
-        if(this.props.params.git.toLowerCase() == "github.com"){
+        if(this.props.params.git.toLowerCase() == "github.com" || this.props.params.git.toLowerCase() == "github"){
             fetch(`https://api.github.com/repos/${this.props.params.user}/${this.props.params.repo}/commits`)
             .then(response => response.json())
             .then(
