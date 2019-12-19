@@ -36,7 +36,6 @@ class Project extends React.Component {
                         repo : repo,
                         gitlab : "ok"
                     })
-                    console.log(this.state.repo[0].id)
                 }
             )
         }
