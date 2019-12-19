@@ -24,7 +24,7 @@ class SearchProject extends React.Component {
                 <div class="jumbotron common">
                     <div className="renderPrincipal">
                         <h3>Enter a GitHub project</h3>
-                        <p>Username/RepositoryName</p>
+                        <p>[gitlab|github]/username/repository_name</p>
                         <form onSubmit={this._handleSubmit}>
                             <input ref="projectInput" type="text" />
                             <button>Search</button>
