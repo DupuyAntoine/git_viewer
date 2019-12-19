@@ -8,7 +8,7 @@ class Page404 extends React.Component {
         return (
             <div>
                 <h1>Error 404</h1>
-                <h2>User or Project not found</h2>
+                <h2>Project not found</h2>
                 {/*Add a return button to the main page*/}
             </div>
         );

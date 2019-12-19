@@ -1,6 +1,6 @@
 import React from 'react';
 import { browserHistory as history } from 'react-router';
-import styles from '../../styles/Render.css'
+import '../../styles/Render.css'
 
 /*
 This component displays a form where the user can enter a GitHub project

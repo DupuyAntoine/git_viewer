@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import styles from '../../styles/Render.css'
+import '../../styles/Render.css';
+import Page404 from '../Page404';
 
 class Project extends React.Component {
     constructor() {
@@ -15,7 +16,7 @@ class Project extends React.Component {
         When `render` gets called again, `this.state.user` exists and we get the user info display instead of "LOADING..."
     */
     componentDidMount() {
-        if(this.props.params.git.toLowerCase() == "github.com" || this.props.params.git.toLowerCase() == "github"){
+        if(this.props.params.git.toLowerCase() === "github.com" || this.props.params.git.toLowerCase() === "github"){
             fetch(`https://api.github.com/repos/${this.props.params.user}/${this.props.params.repo}/commits`)
             .then(response => response.json())
             .then(
@@ -43,7 +44,7 @@ class Project extends React.Component {
     }
 
     componentDidUpdate(){
-        if(this.state.repo !== null && this.state.idbefore !== this.state.repo[0].id && this.state.gitlab == "ok"){
+        if(this.state.repo !== null && this.state.idbefore !== this.state.repo[0].id && this.state.gitlab === "ok"){
             fetch(`https://gitlab.com/api/v4/projects/${this.state.repo[0].id}/repository/commits`)
             .then(response => response.json())
             .then(
@@ -51,7 +52,6 @@ class Project extends React.Component {
                     this.setState({
                         commits : commits
                     })
-                    console.log(commits.id)
                 }
             )
             .then(
@@ -59,8 +59,6 @@ class Project extends React.Component {
                     idbefore : this.state.repo[0].id
                 })
             )
-        }else{
-            console.log("nop")
         }
     }
     
@@ -68,7 +66,7 @@ class Project extends React.Component {
     This method is used as a mapping function. Eventually this could be factored out to its own component.
     */
     renderCommit(commit) {
-        if(this.state.gitlab == "ok"){
+        if(this.state.gitlab === "ok"){
             return (
                 <div key={commit.id} className="common" id={commit.id} >
                     <ul>
@@ -116,9 +114,10 @@ class Project extends React.Component {
             );    
         } else {
             return(
-            <div>
-                <p>There is no commits from the {this.props.params.user}/{this.props.params.repo}, the repository does not exist or is not public.</p>
-            </div>)
+                <div>
+                    <Page404 />
+                </div>
+            )
         }
     }
 };
