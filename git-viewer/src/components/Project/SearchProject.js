@@ -1,5 +1,6 @@
 import React from 'react';
 import { browserHistory as history } from 'react-router';
+import styles from '../../styles/Render.css'
 
 /*
 This component displays a form where the user can enter a GitHub project
@@ -19,13 +20,16 @@ class SearchProject extends React.Component {
 
     render() {
         return (
-            <div className="card mb-3">
-                <div className="renderPrincipal">
-                    <h2>Enter a GitHub project</h2>
-                    <form onSubmit={this._handleSubmit}>
-                        <input ref="projectInput" type="text" />
-                        <button>Search</button>
-                    </form>
+            <div className="container">
+                <div class="jumbotron common">
+                    <div className="renderPrincipal">
+                        <h3>Enter a GitHub project</h3>
+                        <p>Username/RepositoryName</p>
+                        <form onSubmit={this._handleSubmit}>
+                            <input ref="projectInput" type="text" />
+                            <button>Search</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         );

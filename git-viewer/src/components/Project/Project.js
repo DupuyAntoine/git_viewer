@@ -33,7 +33,7 @@ class Project extends React.Component {
     */
     renderCommit(commit) {
         return (
-            <div key={commit.url} className="commit" id={commit.url} >
+            <div key={commit.url} className="common" id={commit.url} >
                 <ul>
                 <a href={commit.html_url}>
                     Link to commit url
