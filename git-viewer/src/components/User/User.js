@@ -36,12 +36,14 @@ class User extends React.Component {
     */
     renderStat(stat) {
         return (
+            <div>
             <li key={stat.name}>
                 <Link to={stat.url}>
                     <p>{stat.value}</p>
                     <p>{stat.name}</p>
                 </Link>
             </li>
+            </div>
         );
     }
 
@@ -77,10 +79,12 @@ class User extends React.Component {
         return (
             <div>
                 <div>
-                    <Link to={`/user/${user.login}`}>
-                        <img src={user.avatar_url} alt={`${user.login} avatar`}/>
-                        <h2>{user.login} ({user.name})</h2>
-                        <p>{user.bio}</p>
+                    <Link style={{textDecoration:"none"}} to={`/user/${user.login}`}>
+                        <div className={"img_cadre"}>
+                            <img src={user.avatar_url} alt={`${user.login} avatar`}/>
+                            <h2>{user.login}</h2>
+                            <p>{user.bio}</p>
+                        </div>
                     </Link>
 
                     <ul>

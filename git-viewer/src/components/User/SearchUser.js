@@ -20,12 +20,15 @@ class SearchUser extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2>Enter a GitHub username</h2>
-                <form onSubmit={this._handleSubmit}>
-                    <input ref="userInput" type="text" />
-                    <button>Search</button>
-                </form>
+            <div className="card mb-3">
+                <div className="principal">
+                    <h2>Enter a GitHub username</h2>
+                    <form onSubmit={this._handleSubmit}>
+                        <input ref="userInput" type="text"/>
+                            <br/>
+                        <button>Search</button>
+                    </form>
+                </div>
             </div>
         );
     }

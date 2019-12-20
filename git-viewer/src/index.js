@@ -16,13 +16,14 @@ import Project from './components/Project/Project'
 import * as serviceWorker from './serviceWorker';
 // import 'bootstrap/dist/css/bootstrap.css';
 
+
 const routes = (
     <Router history={browserHistory}>
         <Route path="/" component={App}>
-            {/* <IndexRoute component={SearchUser}/>
-            <Route path="users/:username" component={User}/> */}
-            <IndexRoute component={SearchProject}/>
-            <Route path="repos/:user/:repo/commits" component={Project}/>
+            <IndexRoute component={SearchUser}/>
+            <Route path="users/:username" component={User}/>
+            {/*<IndexRoute component={SearchProject}/>*/}
+            {/*<Route path="repos/:user/:repo/commits" component={Project}/>*/}
         </Route>
     </Router>
 )
