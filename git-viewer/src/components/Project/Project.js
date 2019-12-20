@@ -68,13 +68,11 @@ class Project extends React.Component {
         if(this.state.gitlab === "ok"){
             return (
                 <div key={commit.id} className="common" id={commit.id} >
-                    <ul>
                     <p>Autheur : {commit.author_name}</p>
                     <p>Date : {commit.authored_date}</p>
                     <p>Commiteur : {commit.committer_name}</p>
                     <p>Date : {commit.committed_date}</p>
                     <p>Message : {commit.message}</p>
-                    </ul>
                 </div>
             );
         }else {
